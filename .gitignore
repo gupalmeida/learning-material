@@ -1,3 +1,6 @@
 *.dat
+*.swp
+*.png
 *.csv
 data/
+dataScraper.py
