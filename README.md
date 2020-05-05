@@ -1,2 +1,2 @@
 # python-scripts
-Repository containing useful Python scripts.
+Repository containing ~~useful~~ Python scripts.
