@@ -4,3 +4,6 @@
 *.csv
 data/
 dataScraper.py
+__pycache__/
+pywav.py
+*.wav
