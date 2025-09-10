@@ -7,3 +7,4 @@ dataScraper.py
 __pycache__/
 pywav.py
 *.wav
+.venv
