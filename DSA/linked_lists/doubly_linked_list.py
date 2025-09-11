@@ -4,10 +4,9 @@ class Node:
     def __init__(self, data):
         self.data = data
         self.next = None
+        self.prev = None
 
-class SinglyLinkedList:
-    """A simple implementation of a singly linked list with basic operations.
-    """
+class DoublyLinkedList:
     def __init__(self):
         self.head = None
 
@@ -20,10 +19,13 @@ class SinglyLinkedList:
         while last.next:
             last = last.next
         last.next = new_node
+        new_node.prev = last
 
     def prepend(self, data):
         new_node = Node(data)
         new_node.next = self.head
+        if self.head:
+            self.head.prev = new_node
         self.head = new_node
 
     def delete_with_value(self, data):
@@ -31,11 +33,16 @@ class SinglyLinkedList:
             return
         if self.head.data == data:
             self.head = self.head.next
+            if self.head:
+                self.head.prev = None
             return
         current = self.head
-        while current.next:
-            if current.next.data == data:
-                current.next = current.next.next
+        while current:
+            if current.data == data:
+                if current.next:
+                    current.next.prev = current.prev
+                if current.prev:
+                    current.prev.next = current.next
                 return
             current = current.next
 
@@ -74,15 +81,3 @@ class SinglyLinkedList:
             count += 1
             current = current.next
         return count
-    
-if __name__ == "__main__":
-    sll = SinglyLinkedList()
-    sll.append(1)
-    sll.append(2)
-    sll.prepend(0)
-    sll.append(2)
-    sll.append(3)
-    sll.prepend(4)
-    print( f"Number of elements in the singly linked list: {len(sll)}" ) # output: 3
-    print( sll ) # output: [0, 1, 2]
-    print( sll.count_all_list_occurrences() )
