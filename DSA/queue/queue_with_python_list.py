@@ -9,7 +9,7 @@ class Queue:
     def is_empty(self):
         return len(self.items) == 0
 
-    def queue(self, value):
+    def enqueue(self, value):
         self.items.append(value)
 
     def dequeue(self):
@@ -38,10 +38,10 @@ class Queue:
 
 if __name__ == "__main__":
     q = Queue()
-    q.queue(10)
-    q.queue(20)
-    q.queue(30)
-    q.queue(40)
+    q.enqueue(10)
+    q.enqueue(20)
+    q.enqueue(30)
+    q.enqueue(40)
     print(q)
     dequeued_elements = []
     for _ in range(2):
